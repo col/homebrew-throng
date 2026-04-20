@@ -4,7 +4,7 @@ class Throng < Formula
   version "0.2.2"
 
   url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
-  sha256 "sha256:e38aa7f6e33b2abf8684f2e7c0c7fc5818ae0e2dbd6fed3fab71b64cb3b98376"
+  sha256 "e38aa7f6e33b2abf8684f2e7c0c7fc5818ae0e2dbd6fed3fab71b64cb3b98376"
 
   depends_on "postgresql@16"
   depends_on "git"
