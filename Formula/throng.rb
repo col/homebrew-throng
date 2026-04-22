@@ -9,6 +9,7 @@ class Throng < Formula
   depends_on "git"
   depends_on :macos
   depends_on "postgresql@16"
+  depends_on "wireguard-tools"
 
   def install
     libexec.install Dir["*"]
@@ -48,15 +49,21 @@ class Throng < Formula
   def caveats
     <<~EOS
       Config file: ~/.throng/config.toml  (created by `throng setup`)
+      WireGuard:   ~/.throng/throng.conf (managed by launchd watcher)
       Logs:        #{var}/log/throng/
 
       First-time setup:
-        1. Run setup (starts Postgres, creates DB and config, migrates):
+        1. Run setup (starts Postgres, creates DB and config, migrates,
+           installs WireGuard watcher):
              throng setup
         2. Start throng:
              brew services start throng
 
       Then open http://localhost:4000
+
+      The WireGuard tunnel is managed automatically via a launchd watcher.
+      When Throng connects to a Hub, the tunnel config is written and the
+      watcher brings the interface up automatically.
     EOS
   end
 
