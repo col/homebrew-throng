@@ -36,6 +36,11 @@ class Throng < Formula
   def post_install
     (var/"throng").mkpath
     (var/"log/throng").mkpath
+
+    plist = "#{Dir.home}/Library/LaunchAgents/homebrew.mxcl.throng.plist"
+    if File.exist?(plist)
+      system HOMEBREW_PREFIX/"bin/brew", "services", "restart", "throng"
+    end
   end
 
   service do
