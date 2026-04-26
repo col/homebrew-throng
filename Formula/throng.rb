@@ -49,7 +49,8 @@ class Throng < Formula
     working_dir var/"throng"
     log_path var/"log/throng/throng.log"
     error_log_path var/"log/throng/throng.error.log"
-    environment_variables PHX_SERVER: "true"
+    environment_variables PHX_SERVER: "true",
+                          PATH: "#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
   end
 
   def caveats
