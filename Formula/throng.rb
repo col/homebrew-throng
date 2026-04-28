@@ -50,14 +50,14 @@ class Throng < Formula
     log_path var/"log/throng/throng.log"
     error_log_path var/"log/throng/throng.error.log"
     environment_variables PHX_SERVER: "true",
-                          THRONG_HOME: "~/.throng",
+                          THRONG_HOME: "#{Dir.home}/.throng",
                           PATH: "#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
   end
 
   def caveats
     <<~EOS
       Config file: ~/.throng/config.toml  (created by `throng setup`)
-      WireGuard:   ~/.throng/throng.conf (managed by launchd watcher)
+      WireGuard:   ~/.throng/wireguard/throng.conf (managed by launchd watcher)
       Logs:        #{var}/log/throng/
 
       First-time setup:
@@ -67,7 +67,7 @@ class Throng < Formula
         2. Start throng:
              brew services start throng
 
-      Then open http://localhost:4000
+      Then open http://localhost:7654
 
       The WireGuard tunnel is managed automatically via a launchd watcher.
       When Throng connects to a Hub, the tunnel config is written and the
