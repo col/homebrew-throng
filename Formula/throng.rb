@@ -2,7 +2,7 @@ class Throng < Formula
   desc "Concurrent agentic coding platform orchestrating Claude Code sessions"
   homepage "https://throng.dev"
   version "0.7.1"
-  sha256 "d1646b914e71b9443c8dfae99b69818a891db40d164f601e3c8c9e2dc5aaa555"
+  sha256 "a2af9c772114a2c6d31d257cd8e10da9d9da05adfa71c594d274f5aaf3350b83"
   url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
 
   depends_on arch: :arm64
