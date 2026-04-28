@@ -50,6 +50,7 @@ class Throng < Formula
     log_path var/"log/throng/throng.log"
     error_log_path var/"log/throng/throng.error.log"
     environment_variables PHX_SERVER: "true",
+                          THRONG_HOME: "~/.throng",
                           PATH: "#{HOMEBREW_PREFIX}/bin:#{HOMEBREW_PREFIX}/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
   end
 
