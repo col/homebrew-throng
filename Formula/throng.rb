@@ -6,6 +6,7 @@ class Throng < Formula
   url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
 
   depends_on arch: :arm64
+  depends_on "colima"
   depends_on "docker"
   depends_on "docker-compose"
   depends_on "gh"
@@ -63,10 +64,14 @@ class Throng < Formula
       Logs:        #{var}/log/throng/
 
       First-time setup:
-        1. Run setup (starts Postgres, creates DB and config, migrates,
+        1. Start the Docker runtime (Colima):
+             colima start
+           Or to start automatically on login:
+             brew services start colima
+        2. Run setup (starts Postgres, creates DB and config, migrates,
            installs WireGuard watcher):
              throng setup
-        2. Start throng:
+        3. Start throng:
              brew services start throng
 
       Then open http://localhost:7654
