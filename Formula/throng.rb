@@ -6,6 +6,8 @@ class Throng < Formula
   url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
 
   depends_on arch: :arm64
+  depends_on "docker"
+  depends_on "docker-compose"
   depends_on "gh"
   depends_on "git"
   depends_on :macos
