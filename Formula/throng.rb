@@ -21,19 +21,17 @@ class Throng < Formula
     (bin/"throng").write <<~SH
       #!/bin/bash
       set -e
-      if [ "$1" = "setup" ]; then
-        shift
-        exec "#{libexec}/bin/brew-setup" "$@"
-      fi
-      exec "#{libexec}/bin/throng" "$@"
+      export THRONG_HOME="${THRONG_HOME:-$HOME/.throng}"
+      case "$1" in
+        setup)    shift; exec "#{libexec}/bin/brew-setup" "$@" ;;
+        migrate)  shift; exec "#{libexec}/bin/migrate"    "$@" ;;
+        rollback) shift; exec "#{libexec}/bin/rollback"   "$@" ;;
+        seed)     shift; exec "#{libexec}/bin/seed"       "$@" ;;
+        server)   shift; exec "#{libexec}/bin/server"     "$@" ;;
+        *)        exec "#{libexec}/bin/throng" "$@" ;;
+      esac
     SH
     chmod 0755, bin/"throng"
-
-    (bin/"throng-migrate").write <<~SH
-      #!/bin/bash
-      exec "#{bin}/throng" eval "Throng.Release.migrate"
-    SH
-    chmod 0755, bin/"throng-migrate"
   end
 
   def post_install
@@ -47,7 +45,7 @@ class Throng < Formula
   end
 
   service do
-    run [opt_bin/"throng", "start"]
+    run [opt_libexec/"bin/migrate_and_server"]
     keep_alive true
     working_dir var/"throng"
     log_path var/"log/throng/throng.log"
