@@ -38,8 +38,16 @@ class Throng < Formula
     (var/"throng").mkpath
     (var/"log/throng").mkpath
 
+    cli_plugins = Pathname.new("#{Dir.home}/.docker/cli-plugins")
+    cli_plugins.mkpath
+    compose_link = cli_plugins/"docker-compose"
+    unless compose_link.exist? || compose_link.symlink?
+      compose_link.make_symlink(HOMEBREW_PREFIX/"lib/docker/cli-plugins/docker-compose")
+    end
+
     plist = "#{Dir.home}/Library/LaunchAgents/homebrew.mxcl.throng.plist"
     if File.exist?(plist)
+      sleep(3000)
       system HOMEBREW_PREFIX/"bin/brew", "services", "restart", "throng"
     end
   end
