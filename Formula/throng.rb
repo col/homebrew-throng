@@ -60,7 +60,7 @@ class Throng < Formula
 
     plist = "#{Dir.home}/Library/LaunchAgents/homebrew.mxcl.throng.plist"
     if File.exist?(plist)
-      sleep(3000)
+      sleep(3)
       system HOMEBREW_PREFIX/"bin/brew", "services", "restart", "throng"
     end
   end
