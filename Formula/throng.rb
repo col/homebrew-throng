@@ -1,5 +1,3 @@
-require "json"
-
 class Throng < Formula
   desc "Concurrent agentic coding platform orchestrating Claude Code sessions"
   homepage "https://throng.dev"
@@ -39,30 +37,6 @@ class Throng < Formula
   def post_install
     (var/"throng").mkpath
     (var/"log/throng").mkpath
-
-    docker_dir = Pathname.new("#{Dir.home}/.docker")
-    docker_dir.mkpath
-    config_path = docker_dir/"config.json"
-    plugin_dir = (HOMEBREW_PREFIX/"lib/docker/cli-plugins").to_s
-
-    begin
-      config = config_path.exist? ? JSON.parse(config_path.read) : {}
-      extra_dirs = config["cliPluginsExtraDirs"]
-      extra_dirs = [] unless extra_dirs.is_a?(Array)
-      unless extra_dirs.include?(plugin_dir)
-        config["cliPluginsExtraDirs"] = extra_dirs + [plugin_dir]
-        config_path.atomic_write(JSON.pretty_generate(config))
-      end
-    rescue JSON::ParserError
-      opoo "~/.docker/config.json is not valid JSON; skipping cliPluginsExtraDirs setup. " \
-           "Add #{plugin_dir} to cliPluginsExtraDirs manually so `docker compose` works."
-    end
-
-    plist = "#{Dir.home}/Library/LaunchAgents/homebrew.mxcl.throng.plist"
-    if File.exist?(plist)
-      sleep(3)
-      system HOMEBREW_PREFIX/"bin/brew", "services", "restart", "throng"
-    end
   end
 
   service do
