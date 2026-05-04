@@ -3,8 +3,8 @@ require "json"
 class Throng < Formula
   desc "Concurrent agentic coding platform orchestrating Claude Code sessions"
   homepage "https://throng.dev"
-  version "0.7.20"
-  sha256 "2e0c8dd5d7e2e6502a3c590cb8c98ca5bc08dec9443a093c56c1b659ed5d23f6"
+  version "0.7.21"
+  sha256 "9aace162ff27085b201df1034917fc6027fd71a99954c6efecac8e72394db0e4"
   url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
 
   depends_on arch: :arm64
