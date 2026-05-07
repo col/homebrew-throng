@@ -13,7 +13,7 @@ class Throng < Formula
   on_macos do
     on_arm do
       url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
-      sha256 "65d5cda49cd56719dfe953147eaec360528a410e67b477f4e2850ae4873cbb85"
+      sha256 "65d5cda49cd56719dfe953147eaec360528a410e67b477f4e2850ae4873cbb85" # darwin-arm64
     end
 
     depends_on "colima"
@@ -22,7 +22,7 @@ class Throng < Formula
   on_linux do
     on_intel do
       url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-linux-amd64.tar.gz"
-      sha256 "5dcd831c292cd4fcb706e9b835bb662aa50acd647adb4319ac713cf0f9a223ad"
+      sha256 "5dcd831c292cd4fcb706e9b835bb662aa50acd647adb4319ac713cf0f9a223ad" # linux-amd64
     end
   end
 
