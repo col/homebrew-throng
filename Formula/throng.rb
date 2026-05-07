@@ -1,7 +1,7 @@
 class Throng < Formula
   desc "Concurrent agentic coding platform orchestrating Claude Code sessions"
   homepage "https://throng.dev"
-  version "0.7.30"
+  version "0.7.31"
 
   depends_on "docker"
   depends_on "docker-compose"
@@ -13,7 +13,7 @@ class Throng < Formula
   on_macos do
     on_arm do
       url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
-      sha256 "65d5cda49cd56719dfe953147eaec360528a410e67b477f4e2850ae4873cbb85" # darwin-arm64
+      sha256 "3e1467d8e33adcad9bd8b102a9b2aac2f4011e9a3a2721303b24c2faaa58b038" # darwin-arm64
     end
 
     depends_on "colima"
@@ -22,7 +22,7 @@ class Throng < Formula
   on_linux do
     on_intel do
       url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-linux-amd64.tar.gz"
-      sha256 "5dcd831c292cd4fcb706e9b835bb662aa50acd647adb4319ac713cf0f9a223ad" # linux-amd64
+      sha256 "d6ab13cf2bd7d660c4d42ad7691dadfaa0b033747d421bae868ae5b1778d55a5" # linux-amd64
     end
   end
 
