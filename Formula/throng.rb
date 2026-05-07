@@ -2,18 +2,29 @@ class Throng < Formula
   desc "Concurrent agentic coding platform orchestrating Claude Code sessions"
   homepage "https://throng.dev"
   version "0.7.30"
-  sha256 "65d5cda49cd56719dfe953147eaec360528a410e67b477f4e2850ae4873cbb85"
-  url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
 
-  depends_on arch: :arm64
-  depends_on "colima"
   depends_on "docker"
   depends_on "docker-compose"
   depends_on "gh"
   depends_on "git"
-  depends_on :macos
   depends_on "postgresql@16"
   depends_on "wireguard-tools"
+
+  on_macos do
+    on_arm do
+      url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
+      sha256 "65d5cda49cd56719dfe953147eaec360528a410e67b477f4e2850ae4873cbb85"
+    end
+
+    depends_on "colima"
+  end
+
+  on_linux do
+    on_intel do
+      url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-linux-amd64.tar.gz"
+      sha256 "5dcd831c292cd4fcb706e9b835bb662aa50acd647adb4319ac713cf0f9a223ad"
+    end
+  end
 
   def install
     libexec.install Dir["*"]
@@ -57,7 +68,7 @@ class Throng < Formula
       Logs:        #{var}/log/throng/
 
       First-time setup:
-        1. Run setup (starts Postgres & Colima, creates and migrates the DB, creates config files and installs WireGuard watcher):
+        1. Run setup (starts Postgres, creates and migrates the DB, creates config files and installs WireGuard watcher):
              throng setup
         2. Start throng:
              brew services start throng
