@@ -57,17 +57,12 @@ class Throng < Formula
       Logs:        #{var}/log/throng/
 
       First-time setup:
-        1. Start the Docker runtime (Colima):
-             colima start
-           Or to start automatically on login:
-             brew services start colima
-        2. Run setup (starts Postgres, creates DB and config, migrates,
-           installs WireGuard watcher):
+        1. Run setup (starts Postgres & Colima, creates and migrates the DB, creates config files and installs WireGuard watcher):
              throng setup
-        3. Start throng:
+        2. Start throng:
              brew services start throng
 
-      Then open http://localhost:7654
+      Then open http://localhost:7654 or https://<instance-name>.hub.throng.dev (once registered)
 
       The WireGuard tunnel is managed automatically via a launchd watcher.
       When Throng connects to a Hub, the tunnel config is written and the
