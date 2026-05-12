@@ -1,7 +1,7 @@
 class ThrongPre < Formula
   desc "Concurrent agentic coding platform (pre-release)"
   homepage "https://throng.dev"
-  version "0.8.0-rc.3"
+  version "0.8.0-rc.4"
 
   depends_on "docker"
   depends_on "docker-compose"
@@ -13,7 +13,7 @@ class ThrongPre < Formula
   on_macos do
     on_arm do
       url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-darwin-arm64.tar.gz"
-      sha256 "96075ec5e103f9ce6c3a0faed5daa3a4002f87f0fbdba3eaa4390e11ca8111c8" # darwin-arm64
+      sha256 "425ffac4f43dd7cd95558f29da44e0e413f37d975888c8824e1f6cf5887bb63a" # darwin-arm64
     end
 
     depends_on "colima"
@@ -22,7 +22,7 @@ class ThrongPre < Formula
   on_linux do
     on_intel do
       url "https://github.com/col/throng.dev/releases/download/throng-v#{version}/throng-v#{version}-linux-amd64.tar.gz"
-      sha256 "8456e98a55a8e4daa1069c69a78160662824b0766849089565fb32ed8512b08b" # linux-amd64
+      sha256 "72e97ca7a67b4f1f1333b79c43051a6cb4081107985b00b1b60cf9dc89a1e97b" # linux-amd64
     end
   end
 
